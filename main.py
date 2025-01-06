@@ -1,12 +1,12 @@
 import streamlit as st
-from langchain.llms import OpenAI
+from langchain.llms import openai
 
 st.title('Sample App')
 
 openai_api_key = st.sidebad.text_input('Open AI Key')
 
 def generate_response(input_text):
-    llm = OpenAI(temperature=0.7, openai_api_key=openai_api_key)
+    llm = openai(temperature=0.7, openai_api_key=openai_api_key)
     st.info(llm(input_text))
 
 with st.form('my_form'):
