@@ -1,5 +1,5 @@
 import streamlit as st
-from langchain.llms import openAI 
+from langchain.llms import OpenAI
 
 st.title('Sample App')
 
