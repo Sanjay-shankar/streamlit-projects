@@ -1,5 +1,5 @@
 import streamlit as st
-from langchain.chat_models import ChatOpenAI  # Updated import
+from langchain.llms import OpenAI  # Use this if ChatOpenAI is unavailable
 
 st.title('Sample Apps')
 
@@ -8,7 +8,7 @@ openai_api_key = st.sidebar.text_input('OpenAI API Key', type='password')
 
 def generate_response(input_text):
     if openai_api_key.startswith('sk-'):
-        llm = ChatOpenAI(temperature=0.7, openai_api_key=openai_api_key)
+        llm = OpenAI(temperature=0.7, openai_api_key=openai_api_key)
         response = llm(input_text)
         st.info(response)
     else:
