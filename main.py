@@ -4,7 +4,7 @@ from langchain.chat_models import ChatOpenAI
 st.title("🦜🔗 Quickstart App")
 
 # Retrieve the OpenAI API key from Streamlit secrets
-openai_api_key = st.secrets.get("openai", {}).get("api_key", None)
+openai_api_key = st.secrets["openai"]["api_key"]
 
 if not openai_api_key:
     st.error("OpenAI API key is missing! Please set it in Streamlit secrets.")
