@@ -1,7 +1,7 @@
 import streamlit as st
 from langchain.llms import openai
 
-st.title('Sample App')
+st.title('Sample Apps')
 
 openai_api_key = st.sidebad.text_input('Open AI Key')
 
