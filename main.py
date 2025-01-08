@@ -1,10 +1,10 @@
 import streamlit as st
-#from langchain.llms import OpenAI  # Use this if ChatOpenAI is unavailable
+from langchain.llms import OpenAI  # Or ChatOpenAI, based on your version
 
-st.title('Sample Apps')
+st.title("Sample App")
 
-# Sidebar input for API key
-openai_api_key = st.sidebar.text_input('OpenAI API Key', type='password')
+# Retrieve the OpenAI API key from Streamlit secrets
+openai_api_key = st.secrets["openai"]["api_key"]
 
 def generate_response(input_text):
     if openai_api_key.startswith('sk-'):
@@ -14,11 +14,9 @@ def generate_response(input_text):
     else:
         st.error("Invalid OpenAI API Key")
 
-with st.form('my_form'):
-    text = st.text_area('Enter text:', 'What are ----')
-    submitted = st.form_submit_button('Submit')
+with st.form("my_form"):
+    text = st.text_area("Enter text:", "What are ----")
+    submitted = st.form_submit_button("Submit")
 
-    if not openai_api_key:
-        st.warning('Please enter your OpenAI API key', icon='⚠️')
-    elif submitted:
+    if submitted:
         generate_response(text)
